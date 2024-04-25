@@ -53,7 +53,6 @@ const userLogin = async (req, res) => {
     let JWTSECRETKEY = process.env.JWTSECRETKEY;
     let token = req.headers.authorization.split(" ")[1];
     let newToken;
-    console.log(token);
     if (token) {
       let rol = Object.keys(userDetails.role);
       newToken = jwt.sign(

@@ -37,7 +37,6 @@ const genrateAuthToken = async (req, res) => {
         rol = { ADMI: "ADMIN" };
       }
       let roles = Object.keys(rol);
-      console.log(roles, "#$$$$$");
       token = jwt.sign(
         {
           info: {
@@ -84,7 +83,6 @@ const genrateAuthToken = async (req, res) => {
       data: token,
     });
   } catch (error) {
-    // console.log(error)
     return res.status(500).json({
       statusCode: 500,
       status: "failure",

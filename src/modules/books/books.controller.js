@@ -150,7 +150,6 @@ const searchBook = async (req, res) => {
       query.author = {
         $regex: req.query.author,
       };
-      console.log(query);
     }
     if (req.query.genre) {
       query.genre = { $regex: req.query.genre };
@@ -178,7 +177,6 @@ const searchBook = async (req, res) => {
       data: bookList,
     });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({
       statusCode: 500,
       status: "failure",

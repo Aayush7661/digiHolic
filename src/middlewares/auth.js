@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const { promisify } = require("util");
 const tokenData = require("../models/token");
 const Users = require("../models/users");
 const authMiddleware = async (req, res, next) => {
@@ -12,7 +13,10 @@ const authMiddleware = async (req, res, next) => {
   if (token) {
     try {
       let JWTSECRETKEY = process.env.JWTSECRETKEY;
-      const decoded = await jwt.verify(token, JWTSECRETKEY);
+      const decoded = await promisify(jwt.verify)(
+        token,
+        JWTSECRETKEY
+      );
       if (!decoded) {
         return res.status(400).json({
           statusCode: 400,
